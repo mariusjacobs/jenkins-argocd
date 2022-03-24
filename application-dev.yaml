@@ -1,0 +1,26 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: jenkins-dev
+  namespace: argocd
+spec:
+  project: default
+
+  source:
+    repoURL: https://github.com/mariusjacobs/jenkins-argocd.git
+    targetRevision: HEAD
+    path: .
+    helm:
+      valueFiles:
+        - values.yaml
+  destination: 
+    server: https://kubernetes.default.svc
+    namespace: jenkins-dev
+
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+
+    automated:
+      selfHeal: true
+      prune: true
