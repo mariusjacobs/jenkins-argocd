@@ -10,6 +10,6 @@ Run the following commands on your ArgoCD-enabled Kubernetes cluster to deploy a
 
 * Sample "Development" environment:
     ```
-    kubectl.exe apply -f https://raw.githubusercontent.com/mariusjacobs/jenkins-argocd/dev/application-dev.yaml
+    kubectl.exe apply -f https://raw.githubusercontent.com/mariusjacobs/jenkins-argocd/main/application-dev.yaml
     ```
 

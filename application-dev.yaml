@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: jenkins-dev
+  name: jenkins
   namespace: argocd
 spec:
   project: default
@@ -15,7 +15,7 @@ spec:
         - values.yaml
   destination: 
     server: https://kubernetes.default.svc
-    namespace: jenkins-dev
+    namespace: jenkins
 
   syncPolicy:
     syncOptions:
