@@ -1,6 +1,8 @@
 # ICX deployment values.
 # This is a YAML-formatted file.
 
+fileSystemId: "fs-00d5a6f8a5b0243b2::fsap-00c324bd3a8203e20"
+
 jenkins:
   # Default values for jenkins.
   # This is a YAML-formatted file.
@@ -126,7 +128,7 @@ jenkins:
       runAsGroup: 1000
       readOnlyRootFilesystem: true
       allowPrivilegeEscalation: false
-    servicePort: 8080
+    servicePort: 80
     targetPort: 8080
     # For minikube, set this to NodePort, elsewhere use LoadBalancer
     # Use ClusterIP if your setup includes ingress controller
@@ -764,7 +766,7 @@ jenkins:
     ## A manually managed Persistent Volume and Claim
     ## Requires persistence.enabled: true
     ## If defined, PVC must be created manually before volume will be bound
-    existingClaim:
+    existingClaim: efs-claim
     ## jenkins data Persistent Volume Storage Class
     ## If defined, storageClassName: <storageClass>
     ## If set to "-", storageClassName: "", which disables dynamic provisioning
@@ -772,7 +774,7 @@ jenkins:
     ##   set, choosing the default provisioner.  (gp2 on AWS, standard on
     ##   GKE, AWS & OpenStack)
     ##
-    storageClass: jenkins-pv
+    storageClass: 
     annotations: {}
     labels: {}
     accessMode: "ReadWriteOnce"

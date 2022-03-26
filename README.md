@@ -1,8 +1,34 @@
 # ArgoCD Repository for Jenkins Deployment
 
-## Features
+## Overview
 
-This repository uses Helm to deploy Jenkins:
+This repository uses Helm to deploy Jenkins. The following resources were used in setting up this repository:
+
+* [Deploying Jenkins on Amazon EKS with Amazon EFS](https://aws.amazon.com/blogs/storage/deploying-jenkins-on-amazon-eks-with-amazon-efs/)
+* [Kubernetes page on jenkins.io](https://www.jenkins.io/doc/book/installing/kubernetes/)
+
+
+
+## Create an EKS Cluster
+
+1. Create an EKS cluster using your preferred mechanism. For example:
+
+    ```
+    eksctl create cluster --name kube-demo --region us-west-1 --zones us-west-1a,us-west-1b --managed --nodegroup-name mynodegroup
+    ```
+
+2. Test access to the cluster
+    ```
+    kubectl get svc
+    ```
+
+## Create an Amazon EFS file system
+
+1. Capture your VPC ID
+    ```
+    aws ec2 describe-vpcs    
+    ```
+
 
 ## How to deploy an environment?
 
