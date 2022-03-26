@@ -1,7 +1,7 @@
 # ICX deployment values.
 # This is a YAML-formatted file.
 
-fileSystemId: "fs-00d5a6f8a5b0243b2::fsap-00c324bd3a8203e20"
+volumeHandle: "fs-00d5a6f8a5b0243b2::fsap-00c324bd3a8203e20"
 
 jenkins:
   # Default values for jenkins.
