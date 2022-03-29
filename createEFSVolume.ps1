@@ -70,7 +70,7 @@ Grant-EC2SecurityGroupIngress `
 
 Write-Host "Granting security group ingress..."
 $fileSystem = New-EFSFileSystem `
-    -CreationToken "creation-token" `
+    -CreationToken "creation-token2" `
     -PerformanceMode generalPurpose `
     -ThroughputMode bursting 
 
