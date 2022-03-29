@@ -247,7 +247,9 @@ jenkins:
       - kubernetes:1.31.3
       - workflow-aggregator:2.6
       - git:4.10.2
-      - configuration-as-code:1.55.1
+      # - configuration-as-code:1.55.1 # NOTE: commented out because it was causing this error:
+      # Plugin git:4.10.2 (via credentials:1087.v16065d268466) depends on configuration-as-code:1414.v878271fc496f, but there is an older version defined on the top level - configuration-as-code:1.55.1
+
 
     # Set to false to download the minimum required version of all dependencies.
     installLatestPlugins: true

@@ -67,6 +67,7 @@ Run the following commands on your ArgoCD-enabled Kubernetes cluster to deploy a
     ```
     kubectl.exe apply -f https://raw.githubusercontent.com/mariusjacobs/jenkins-argocd/main/application-dev.yaml
     ```
+* Go to the ArgoCD UI and wait for the application to complete progressing.
 
 ## Access the Jenkins web UI console
 
