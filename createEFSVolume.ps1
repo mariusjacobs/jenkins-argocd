@@ -69,11 +69,6 @@ Grant-EC2SecurityGroupIngress `
     -IpPermission @( @{ IpProtocol="tcp"; FromPort="2049"; ToPort="2049"; IpRanges="192.168.0.0/16" })
 
 Write-Host "Granting security group ingress..."
-# $fileSystem = New-EFSFileSystem `
-#     -CreationToken "creation-token" `
-#     -PerformanceMode Amazon.ElasticFileSystem.PerformanceMode.GeneralPurpose `
-#     -ThroughputMode Amazon.ElasticFileSystem.ThroughputMode.Bursting `
-#     -Tag @( [Amazon.ElasticFileSystem.Model.Tag]::new("Name","MyEFSFileSystem")) 
 $fileSystem = New-EFSFileSystem `
     -CreationToken "creation-token" `
     -PerformanceMode generalPurpose `
