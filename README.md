@@ -26,9 +26,22 @@ This repository uses Helm to deploy Jenkins. The following resources were used i
     kubectl create namespace argocd
     kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
     ```
+1. If you are running ArgoCD on a mixed Linux / Windows cluster run the following commands to ensure that ArgoCD only runs on the Linux nodes. 
+   Note, you can skip this step if your cluster only has Linux nodes.
+    ```
+    kubectl patch statefulset argocd-application-controller -n argocd --patch-file deployment-patch.yaml
+    kubectl patch deployment argocd-applicationset-controller -n argocd --patch-file deployment-patch.yaml
+    kubectl patch deployment argocd-dex-server -n argocd --patch-file deployment-patch.yaml
+    kubectl patch deployment argocd-notifications-controller -n argocd --patch-file deployment-patch.yaml
+    kubectl patch deployment argocd-redis -n argocd --patch-file deployment-patch.yaml
+    kubectl patch deployment argocd-repo-server -n argocd --patch-file deployment-patch.yaml
+    kubectl patch deployment argocd-server -n argocd --patch-file deployment-patch.yaml
+    kubectl delete pod argocd-application-controller-0 -n argocd
+    ```
 1. Change ArgoCD service type to load balancer
+    ```
     kubectl patch svc argocd-server -n argocd --patch-file service-patch.yaml
-
+    ```
 1. Wait for all ArgoCD pods to be running
     ```
     kubectl get pods -n argocd
@@ -41,7 +54,7 @@ This repository uses Helm to deploy Jenkins. The following resources were used i
     ```
     powershell -Command "[System.Text.Encoding]::UTF8.GetString([System.Convert]::FromBase64String($(kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath='{.data.password}')))"
     ```
-* Navigate to the url and enter `admin` for username and the password returned by the previous command. Note, load balancer may take some time to be provisioned.
+1. Navigate to the url and enter `admin` for username and the password returned by the previous command. Note, load balancer may take some time to be provisioned.
 
 
 ## Create an Amazon EFS file system
