@@ -5,8 +5,8 @@ metadata:
 spec:
   accessModes:
     - ReadWriteMany
-  # storageClassName: efs-sc
-  storageClassName: nfs-client
   resources:
     requests:
-      storage: 5Gi
+      storage: 10Gi
+  storageClassName: nfs-client
+  volumeName: jenkins-storage-pv

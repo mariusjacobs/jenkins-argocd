@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: jenkins-storage-pv
+spec:
+  storageClassName: nfs-client
+  capacity:
+    storage: 10Gi
+  volumeMode: Filesystem
+  accessModes:
+    - ReadWriteMany
+  nfs: 
+    path: /data/jenkins 
+    server: 192.168.1.240 
+  persistentVolumeReclaimPolicy: Retain
