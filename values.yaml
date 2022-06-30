@@ -132,7 +132,7 @@ jenkins:
     targetPort: 8080
     # For minikube, set this to NodePort, elsewhere use LoadBalancer
     # Use ClusterIP if your setup includes ingress controller
-    serviceType: LoadBalancer
+    serviceType: ClusterIP
     # Use Local to preserve the client source IP and avoids a second hop for LoadBalancer and Nodeport type services,
     # but risks potentially imbalanced traffic spreading.
     serviceExternalTrafficPolicy:
@@ -429,7 +429,7 @@ jenkins:
     updateStrategy: {}
 
     ingress:
-      enabled: false
+      enabled: true
       # Override for the default paths that map requests to the backend
       paths: []
       # - backend:
@@ -453,11 +453,12 @@ jenkins:
       # Set this path to jenkinsUriPrefix above or use annotations to rewrite path
       # path: "/jenkins"
       # configures the hostname e.g. jenkins.example.com
-      hostName:
+      hostName: jenkins
       tls:
       # - secretName: jenkins.cluster.local
       #   hosts:
       #     - jenkins.cluster.local
+
 
     # often you want to have your controller all locked down and private
     # but you still want to get webhooks from your SCM
