@@ -9,4 +9,4 @@ spec:
     requests:
       storage: 10Gi
   storageClassName: nfs-client
-  volumeName: jenkins-storage-pv
+#   volumeName: jenkins-storage-pv
