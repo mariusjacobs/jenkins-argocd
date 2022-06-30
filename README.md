@@ -11,12 +11,12 @@ This repository uses Helm to deploy Jenkins. The following resources were used i
 
 1. Create an EKS cluster using your preferred mechanism. For example:
     ```
-    eksctl.exe create cluster --name kube-demo --region us-west-1 --zones us-west-1b,us-west-1c --managed --nodegroup-name mynodegroup
+    eksctl create cluster --name kube-demo --region us-west-1 --zones us-west-1b,us-west-1c --managed --nodegroup-name mynodegroup
     ```
 
 1. Test access to the cluster
     ```
-    kubectl.exe get svc
+    kubectl get svc
     ```
 
 ## Deploy ArgoCD to the cluster
@@ -78,7 +78,7 @@ Run the following commands on your ArgoCD-enabled Kubernetes cluster to deploy a
 
 * Sample "Development" environment:
     ```
-    kubectl.exe apply -f https://raw.githubusercontent.com/mariusjacobs/jenkins-argocd/main/application-dev.yaml
+    kubectl apply -f https://raw.githubusercontent.com/mariusjacobs/jenkins-argocd/main/application-dev.yaml
     ```
 * Go to the ArgoCD UI and wait for the application to complete progressing.
 
@@ -94,4 +94,19 @@ Run the following commands on your ArgoCD-enabled Kubernetes cluster to deploy a
     ```
 * Navigate to the url and enter `admin` for username and the password returned by the previous command
 
-## TODO: Add Cleanup
+## Cleanup
+
+* Delete EFS file system
+* Delete security group created for EFS file system
+* Delete jenkins application in ArgoCD
+    ```
+    kubectl delete -f https://raw.githubusercontent.com/mariusjacobs/jenkins-argocd/main/application-dev.yaml
+    ```
+* Delete ArgoCD namespace
+    ```
+    kubectl delete namespace argocd
+    ```
+* Delete Kubernetes cluster namespace
+    ```
+    eksctl delete cluster --name kube-demo --region us-west-1
+    ```
