@@ -15,7 +15,7 @@ spec:
         - values.yaml
   destination: 
     server: https://kubernetes.default.svc
-    namespace: jenkins
+    namespace: default
 
   syncPolicy:
     syncOptions:
